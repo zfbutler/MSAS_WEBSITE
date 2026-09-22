@@ -102,6 +102,8 @@ footer { padding: 52px 0 28px; color: white; background: var(--blue); }
 .board-page .hero-lede { max-width: 700px; margin: 28px 0 0; color: rgba(255,255,255,.76); font-size: clamp(1.05rem, 2vw, 1.26rem); }
 
 /* About */
+/* About page hero image */
+.about-page .page-hero::before { opacity: 1; background:linear-gradient(90deg, rgba(0, 22, 43, 0.96),  rgba(0, 27, 52, 0.65)),url("/assets/images/big_house.jpg") center / cover;}
 .about-page .intro { padding: 105px 0; }
 .about-page .intro-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(50px, 8vw, 120px); }
 .about-page .intro h2 { position: sticky; top: 30px; margin: 0; font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: 1; letter-spacing: -.055em; }
@@ -204,6 +206,28 @@ footer { padding: 52px 0 28px; color: white; background: var(--blue); }
 .symposium-page .year-card strong { font-size: clamp(4.5rem, 10vw, 8rem); line-height: .85; letter-spacing: -.08em; }
 .symposium-page .year-card:hover { transform: translateY(-3px); }
 
+/* Previous project examples */
+.examples-page .examples-hero { position: relative; overflow: hidden; padding: 112px 0 88px; color: white; background: var(--blue); }
+.examples-page .examples-hero::before { content: ""; position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px); background-size: 58px 58px; }
+.examples-page .examples-hero::after { content: ""; position: absolute; right: -165px; bottom: -270px; width: 480px; height: 480px; border: 96px solid var(--maize); border-radius: 50%; }
+.examples-page .examples-hero-inner { position: relative; z-index: 1; }
+.examples-page .examples-hero .eyebrow { color: var(--maize); }
+.examples-page h1 { max-width: 900px; margin: 0; font-size: clamp(3.5rem, 8vw, 7.2rem); line-height: .91; letter-spacing: -.065em; }
+.examples-page .examples-lede { max-width: 720px; margin: 28px 0 0; color: rgba(255,255,255,.76); font-size: clamp(1.05rem, 2vw, 1.26rem); }
+.examples-page .poster-section { padding: 100px 0 120px; }
+.examples-page .poster-intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: start; margin-bottom: 48px; }
+.examples-page .poster-intro h2 { margin: 0; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1; letter-spacing: -.055em; }
+.examples-page .poster-intro p { max-width: 620px; margin: 5px 0 0; color: var(--muted); font-size: 1.08rem; }
+.examples-page .poster-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.examples-page .poster-card { overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: white; box-shadow: 0 18px 45px rgba(0,39,76,.08); }
+.examples-page .poster-card a { display: block; text-decoration: none; }
+.examples-page .poster-image { display: grid; place-items: center; min-height: 420px; padding: 22px; background: #ecece7; }
+.examples-page .poster-image img { width: 100%; height: auto; max-height: 660px; object-fit: contain; transition: transform .3s ease; }
+.examples-page .poster-card a:hover .poster-image img { transform: scale(1.012); }
+.examples-page .poster-caption { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 22px 24px; }
+.examples-page .poster-caption strong { font-size: 1.08rem; }
+.examples-page .poster-caption span { color: var(--muted); font: 500 .72rem "DM Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .button:hover, .year-card:hover, .member:hover .portrait img { transform: none; }
@@ -281,6 +305,11 @@ footer { padding: 52px 0 28px; color: white; background: var(--blue); }
   .symposium-page .story-copy { padding: 68px 28px 78px; }
   .symposium-page .archive-head { display: block; }
   .symposium-page .archive-head > p { margin-top: 22px; }
+
+  .examples-page .examples-hero { padding: 85px 0 72px; }
+  .examples-page .examples-hero::after { width: 270px; height: 270px; right: -155px; bottom: -155px; border-width: 55px; }
+  .examples-page .poster-section { padding: 76px 0 90px; }
+  .examples-page .poster-intro { grid-template-columns: 1fr; gap: 22px; }
 }
 
 @media (max-width: 580px) {
@@ -291,4 +320,7 @@ footer { padding: 52px 0 28px; color: white; background: var(--blue); }
   .symposium-page .year-grid { grid-template-columns: 1fr; }
   .board-page .portrait { aspect-ratio: 4 / 4.8; }
   .symposium-page .year-card { min-height: 260px; }
+  .examples-page .poster-grid { grid-template-columns: 1fr; }
+  .examples-page .poster-image { min-height: 300px; padding: 14px; }
+  .examples-page .poster-caption { align-items: flex-start; flex-direction: column; gap: 5px; }
 }
