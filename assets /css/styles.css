@@ -1,0 +1,294 @@
+:root {
+  --blue: #00274c;
+  --blue-dark: #061d35;
+  --maize: #ffcb05;
+  --cream: #f7f6f0;
+  --white: #fff;
+  --ink: #132238;
+  --muted: #5d6978;
+  --line: rgba(0, 39, 76, .15);
+  --max: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--cream); font: 400 1rem/1.65 "Manrope", system-ui, sans-serif; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+.eyebrow { margin: 0 0 15px; font: 500 .78rem/1.4 "DM Mono", monospace; letter-spacing: .11em; text-transform: uppercase; }
+
+/* Shared navigation */
+.site-header { position: relative; z-index: 20; color: white; background: var(--blue); }
+.home-page .site-header,
+.symposium-page .site-header { position: absolute; inset: 0 0 auto; background: transparent; }
+.nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 28px; border-bottom: 1px solid rgba(255,255,255,.2); }
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand img { width: 48px; height: 48px; object-fit: contain; }
+.brand-text { max-width: 190px; font-size: .8rem; font-weight: 800; line-height: 1.2; text-transform: uppercase; letter-spacing: .07em; }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a { font-size: .9rem; font-weight: 700; text-decoration: none; }
+.nav-links a:not(.nav-cta):hover,
+.nav-links .active { color: var(--maize); }
+.nav-cta { padding: 11px 17px; border-radius: 999px; color: var(--blue); background: var(--maize); }
+.menu-button { display: none; border: 0; color: white; background: transparent; cursor: pointer; }
+
+/* Shared buttons and footer */
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; font-size: .9rem; font-weight: 800; text-decoration: none; }
+.button-primary { color: var(--blue); background: var(--maize); }
+.button-secondary { color: white; border-color: rgba(255,255,255,.48); background: rgba(255,255,255,.04); }
+.button:hover { transform: translateY(-2px); }
+footer { padding: 52px 0 28px; color: white; background: var(--blue); }
+.footer-top { display: flex; justify-content: space-between; gap: 40px; align-items: center; padding-bottom: 34px; border-bottom: 1px solid rgba(255,255,255,.18); }
+.footer-brand { display: flex; gap: 16px; align-items: center; max-width: 430px; }
+.footer-brand img { width: 58px; height: 58px; object-fit: contain; }
+.footer-brand strong { display: block; max-width: 320px; line-height: 1.25; }
+.footer-brand span { display: block; margin-top: 4px; color: rgba(255,255,255,.6); font-size: .8rem; }
+.socials { display: flex; flex-wrap: wrap; gap: 9px; }
+.socials a { display: inline-grid; place-items: center; width: 43px; height: 43px; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; font: 500 .73rem "DM Mono", monospace; text-decoration: none; }
+.socials a:hover { color: var(--blue); border-color: var(--maize); background: var(--maize); }
+.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 23px; color: rgba(255,255,255,.55); font-size: .78rem; }
+:focus-visible { outline: 3px solid var(--maize); outline-offset: 4px; }
+
+/* Home */
+.home-page .hero { position: relative; min-height: 760px; display: grid; place-items: end stretch; overflow: hidden; color: white; background: var(--blue); }
+.home-page .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,22,43,.98) 0%, rgba(0,25,50,.87) 48%, rgba(0,20,42,.35) 100%), url("/assets/images/MSAS_Flair.webp") center 38% / cover; }
+.home-page .hero::after { content: ""; position: absolute; inset: 0; opacity: .22; background-image: linear-gradient(rgba(255,255,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.09) 1px, transparent 1px); background-size: 56px 56px; mask-image: linear-gradient(to right, #000, transparent 72%); }
+.home-page .hero-inner { position: relative; z-index: 2; padding: 190px 0 72px; }
+.home-page .hero-copy { width: min(800px, 100%); }
+.home-page .hero .eyebrow { color: var(--maize); }
+.home-page h1 { max-width: 850px; margin: 0; font-size: clamp(3.4rem, 7vw, 6.9rem); line-height: .91; letter-spacing: -.065em; }
+.home-page .hero-lede { max-width: 650px; margin: 30px 0 34px; color: rgba(255,255,255,.84); font-size: clamp(1.05rem, 2vw, 1.28rem); }
+.home-page .signal-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 78px; background: rgba(255,255,255,.2); border-block: 1px solid rgba(255,255,255,.2); }
+.home-page .signal { padding: 22px 26px 20px; background: rgba(0,28,55,.58); backdrop-filter: blur(8px); }
+.home-page .signal span { display: block; color: var(--maize); font: 500 .72rem "DM Mono", monospace; letter-spacing: .09em; text-transform: uppercase; }
+.home-page .signal strong { display: block; margin-top: 5px; font-size: 1rem; }
+.home-page section { padding: 108px 0; }
+.home-page .section-head { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; align-items: start; margin-bottom: 54px; }
+.home-page .section-head h2,
+.home-page .symposium-copy h2,
+.home-page .join-copy h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: 1; letter-spacing: -.055em; }
+.home-page .section-intro { max-width: 650px; margin: 4px 0 0; color: var(--muted); font-size: 1.1rem; }
+.home-page .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); }
+.home-page .feature { position: relative; padding: 40px 34px 38px 0; }
+.home-page .feature + .feature { padding-left: 34px; border-left: 1px solid var(--line); }
+.home-page .feature-number { color: #7b8793; font: 500 .78rem "DM Mono", monospace; }
+.home-page .feature h3 { margin: 34px 0 12px; font-size: 1.35rem; line-height: 1.2; }
+.home-page .feature p { margin: 0; color: var(--muted); }
+.home-page .symposium { padding: 0; color: white; background: var(--blue-dark); }
+.home-page .symposium-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 670px; }
+.home-page .symposium-photo { position: relative; min-height: 460px; overflow: hidden; }
+.home-page .symposium-photo img { width: 100%; height: 100%; object-fit: cover; }
+.home-page .symposium-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 92px); }
+.home-page .symposium-copy .eyebrow { color: var(--maize); }
+.home-page .symposium-copy p:not(.eyebrow) { max-width: 550px; margin: 26px 0 34px; color: rgba(255,255,255,.73); }
+.home-page .join { background: var(--maize); }
+.home-page .join-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 60px; align-items: end; }
+.home-page .join-copy p { max-width: 650px; margin: 24px 0 0; color: rgba(0,39,76,.78); font-size: 1.08rem; }
+.home-page .join-action { justify-self: end; }
+.home-page .join .button-primary { color: white; background: var(--blue); }
+
+/* About and executive-board page banners */
+.page-hero { position: relative; overflow: hidden; padding: 112px 0 88px; color: white; background: var(--blue); }
+.page-hero::before { content: ""; position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px); background-size: 58px 58px; }
+.page-hero::after { content: ""; position: absolute; right: -165px; bottom: -270px; width: 480px; height: 480px; border: 96px solid var(--maize); border-radius: 50%; }
+.page-hero .hero-inner { position: relative; z-index: 1; }
+.page-hero .eyebrow { color: var(--maize); }
+.about-page h1,
+.board-page h1 { max-width: 900px; margin: 0; font-size: clamp(3.5rem, 8vw, 7.2rem); line-height: .91; letter-spacing: -.065em; }
+.about-page .hero-lede,
+.board-page .hero-lede { max-width: 700px; margin: 28px 0 0; color: rgba(255,255,255,.76); font-size: clamp(1.05rem, 2vw, 1.26rem); }
+
+/* About */
+.about-page .intro { padding: 105px 0; }
+.about-page .intro-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(50px, 8vw, 120px); }
+.about-page .intro h2 { position: sticky; top: 30px; margin: 0; font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: 1; letter-spacing: -.055em; }
+.about-page .body-copy { font-size: 1.1rem; }
+.about-page .body-copy p { margin: 0 0 27px; }
+.about-page .body-copy p:first-child { font-size: clamp(1.45rem, 2.6vw, 2rem); line-height: 1.4; letter-spacing: -.025em; }
+.about-page .body-copy a { font-weight: 700; text-decoration-color: var(--maize); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.about-page .principles { padding: 95px 0; color: white; background: var(--blue-dark); }
+.about-page .principles-head { display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 55px; }
+.about-page .principles h2 { max-width: 690px; margin: 0; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
+.about-page .principles .eyebrow { color: var(--maize); }
+.about-page .principle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.17); border-block: 1px solid rgba(255,255,255,.17); }
+.about-page .principle { min-height: 275px; padding: 36px; background: var(--blue-dark); }
+.about-page .principle span { color: var(--maize); font: 500 .76rem "DM Mono", monospace; }
+.about-page .principle h3 { margin: 70px 0 12px; font-size: 1.35rem; }
+.about-page .principle p { margin: 0; color: rgba(255,255,255,.66); }
+.about-page .collaboration { padding: 105px 0; }
+.about-page .collab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+.about-page .collab-copy h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
+.about-page .collab-copy p:not(.eyebrow) { margin: 25px 0 0; color: var(--muted); font-size: 1.08rem; }
+.about-page .stat-panel { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border-radius: 24px; background: var(--maize); }
+.about-page .stat { min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; padding: 32px; }
+.about-page .stat + .stat { border-left: 1px solid rgba(0,39,76,.22); }
+.about-page .stat strong { font-size: clamp(3rem, 7vw, 5rem); line-height: 1; letter-spacing: -.07em; }
+.about-page .stat span { color: rgba(0,39,76,.7); font: 500 .78rem/1.5 "DM Mono", monospace; text-transform: uppercase; }
+.about-page .contact { padding: 92px 0; color: white; background: var(--blue); }
+.about-page .contact-grid { display: grid; grid-template-columns: 1fr auto; gap: 50px; align-items: end; }
+.about-page .contact h2 { max-width: 760px; margin: 0; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
+.about-page .contact .eyebrow { color: var(--maize); }
+.about-page .contact .button { color: var(--blue); background: var(--maize); }
+.about-page footer { padding: 32px 0; color: rgba(255,255,255,.62); background: var(--blue-dark); font-size: .8rem; }
+.about-page .footer-row { display: flex; justify-content: space-between; gap: 24px; }
+
+/* Executive board */
+.board-page .board { padding: 105px 0 120px; }
+.board-page .board-heading { display: flex; align-items: end; justify-content: space-between; gap: 45px; margin-bottom: 46px; }
+.board-page .board-heading h2 { max-width: 660px; margin: 0; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
+.board-page .board-heading p:last-child { max-width: 380px; margin: 0; color: var(--muted); }
+.board-page .board-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.board-page .member { position: relative; overflow: hidden; min-width: 0; border-radius: 24px; color: white; background: var(--blue-dark); }
+.board-page .portrait { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #dfe4e7; }
+.board-page .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .45s ease; }
+.board-page .member:hover .portrait img { transform: scale(1.025); }
+.board-page .member-info { position: relative; min-height: 190px; padding: 28px 28px 30px; }
+.board-page .member-info::before { content: ""; position: absolute; top: 0; left: 28px; width: 54px; height: 4px; background: var(--maize); }
+.board-page .role { margin: 0 0 25px; color: var(--maize); font: 500 .75rem/1.4 "DM Mono", monospace; letter-spacing: .09em; text-transform: uppercase; }
+.board-page .member h3 { margin: 0; font-size: clamp(1.55rem, 3vw, 2.15rem); line-height: 1.05; letter-spacing: -.035em; }
+.board-page .member h3 a { text-decoration: none; text-decoration-color: var(--maize); text-underline-offset: 6px; }
+.board-page .member h3 a::after { content: " ↗"; color: var(--maize); font: 500 .72em "DM Mono", monospace; }
+.board-page .member h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+.board-page .details { margin: 12px 0 0; color: rgba(255,255,255,.63); font-size: .9rem; }
+.board-page .details span { display: block; }
+.board-page .contact { padding: 82px 0; background: var(--maize); }
+.board-page .contact-grid { display: grid; grid-template-columns: 1fr auto; gap: 50px; align-items: end; }
+.board-page .contact h2 { max-width: 760px; margin: 0; color: var(--blue); font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1; letter-spacing: -.055em; }
+.board-page .contact .button { color: white; background: var(--blue); }
+
+/* Symposium */
+.symposium-page .hero { position: relative; min-height: 760px; display: grid; align-items: end; overflow: hidden; color: white; background: var(--blue); }
+.symposium-page .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,24,47,.97) 0%, rgba(0,27,54,.77) 54%, rgba(0,20,42,.3) 100%), url("/assets/images/msas_symposium.jpg") center 44% / cover; }
+.symposium-page .hero::after { content: ""; position: absolute; inset: 0; opacity: .2; background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 58px 58px; mask-image: linear-gradient(to right, #000, transparent 72%); }
+.symposium-page .hero-inner { position: relative; z-index: 1; padding: 190px 0 78px; }
+.symposium-page .hero .eyebrow { color: var(--maize); }
+.symposium-page h1 { max-width: 930px; margin: 0; font-size: clamp(3.6rem, 8vw, 7.5rem); line-height: .9; letter-spacing: -.067em; }
+.symposium-page .hero-lede { max-width: 700px; margin: 30px 0 0; color: rgba(255,255,255,.8); font-size: clamp(1.08rem, 2vw, 1.3rem); }
+.symposium-page .hero-stat { display: inline-flex; align-items: baseline; gap: 12px; margin-top: 46px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.35); }
+.symposium-page .hero-stat strong { color: var(--maize); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; letter-spacing: -.06em; }
+.symposium-page .hero-stat span { max-width: 220px; color: rgba(255,255,255,.7); font: 500 .74rem/1.45 "DM Mono", monospace; text-transform: uppercase; }
+.symposium-page .overview { padding: 108px 0; }
+.symposium-page .overview-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(55px, 9vw, 130px); align-items: start; }
+.symposium-page .overview h2,
+.symposium-page .archive h2 { margin: 0; font-size: clamp(2.6rem, 5vw, 4.7rem); line-height: 1; letter-spacing: -.057em; }
+.symposium-page .overview-copy { font-size: 1.1rem; }
+.symposium-page .overview-copy p { margin: 0 0 26px; }
+.symposium-page .overview-copy p:first-child { font-size: clamp(1.4rem, 2.5vw, 1.95rem); line-height: 1.4; letter-spacing: -.025em; }
+.symposium-page .feature-list { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 70px; border-block: 1px solid var(--line); }
+.symposium-page .feature { padding: 34px 30px 34px 0; }
+.symposium-page .feature + .feature { padding-left: 30px; border-left: 1px solid var(--line); }
+.symposium-page .feature span { color: #75808b; font: 500 .74rem "DM Mono", monospace; }
+.symposium-page .feature h3 { margin: 28px 0 10px; font-size: 1.25rem; }
+.symposium-page .feature p { margin: 0; color: var(--muted); }
+.symposium-page .story { color: white; background: var(--blue-dark); }
+.symposium-page .story-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 680px; }
+.symposium-page .story-image { min-height: 500px; overflow: hidden; }
+.symposium-page .story-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+.symposium-page .story-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(52px, 8vw, 100px); }
+.symposium-page .story-copy .eyebrow { color: var(--maize); }
+.symposium-page .story-copy h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1; letter-spacing: -.055em; }
+.symposium-page .story-copy p:not(.eyebrow) { margin: 27px 0 0; color: rgba(255,255,255,.69); font-size: 1.06rem; }
+.symposium-page .archive { padding: 108px 0 120px; }
+.symposium-page .archive-head { display: flex; justify-content: space-between; align-items: end; gap: 48px; margin-bottom: 45px; }
+.symposium-page .archive-head > p { max-width: 390px; margin: 0; color: var(--muted); }
+.symposium-page .year-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.symposium-page .year-card { position: relative; min-height: 330px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 34px; border-radius: 24px; text-decoration: none; }
+.symposium-page .year-card:first-child { color: white; background: var(--blue); }
+.symposium-page .year-card:last-child { color: var(--blue); border: 1px solid var(--line); background: #eeede6; }
+.symposium-page .year-card::after { content: "↗"; position: absolute; right: 30px; top: 25px; color: var(--maize); font-size: 2rem; }
+.symposium-page .year-card:last-child::after { color: var(--blue); }
+.symposium-page .year-card span { font: 500 .75rem "DM Mono", monospace; letter-spacing: .09em; text-transform: uppercase; }
+.symposium-page .year-card strong { font-size: clamp(4.5rem, 10vw, 8rem); line-height: .85; letter-spacing: -.08em; }
+.symposium-page .year-card:hover { transform: translateY(-3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button:hover, .year-card:hover, .member:hover .portrait img { transform: none; }
+  .portrait img, .button { transition: none; }
+}
+
+@media (max-width: 850px) {
+  .shell { width: min(calc(100% - 28px), var(--max)); }
+  .nav { min-height: 76px; }
+  .brand img { width: 42px; height: 42px; }
+  .nav-links { position: absolute; z-index: 30; top: 76px; left: 14px; right: 14px; display: none; padding: 20px; align-items: stretch; flex-direction: column; gap: 10px; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(0,31,61,.99); box-shadow: 0 18px 45px rgba(0,0,0,.25); }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px; }
+  .nav-cta { text-align: center; }
+  .menu-button { display: inline-grid; place-items: center; width: 44px; height: 44px; }
+  .page-hero { padding: 85px 0 72px; }
+  .page-hero::after { width: 270px; height: 270px; right: -155px; bottom: -155px; border-width: 55px; }
+
+  .home-page .hero { min-height: 760px; }
+  .home-page .hero::before { background: linear-gradient(90deg, rgba(0,22,43,.96), rgba(0,27,52,.72)), url("/assets/images/MSAS_Flair.webp") 58% center / cover; }
+  .home-page .hero-inner { padding-top: 150px; }
+  .home-page h1 { font-size: clamp(3.3rem, 15vw, 5.2rem); }
+  .home-page .signal-row { grid-template-columns: 1fr; }
+  .home-page .signal + .signal { border-top: 1px solid rgba(255,255,255,.18); }
+  .home-page section { padding: 80px 0; }
+  .home-page .section-head,
+  .home-page .symposium-grid,
+  .home-page .join-grid { grid-template-columns: 1fr; }
+  .home-page .section-head { gap: 22px; }
+  .home-page .feature-grid { grid-template-columns: 1fr; }
+  .home-page .feature,
+  .home-page .feature + .feature { padding: 30px 0; border-left: 0; }
+  .home-page .feature + .feature { border-top: 1px solid var(--line); }
+  .home-page .feature h3 { margin-top: 18px; }
+  .home-page .symposium-photo { min-height: 420px; }
+  .home-page .symposium-copy { padding: 64px 28px 76px; }
+  .home-page .join-action { justify-self: start; }
+
+  .about-page .intro,
+  .about-page .collaboration { padding: 75px 0; }
+  .about-page .intro-grid,
+  .about-page .collab-grid,
+  .about-page .contact-grid { grid-template-columns: 1fr; }
+  .about-page .intro-grid,
+  .about-page .collab-grid { gap: 38px; }
+  .about-page .intro h2 { position: static; }
+  .about-page .principles { padding: 75px 0; }
+  .about-page .principles-head { display: block; }
+  .about-page .principle-grid { grid-template-columns: 1fr; }
+  .about-page .principle { min-height: 0; }
+  .about-page .principle h3 { margin-top: 42px; }
+  .about-page .stat { min-height: 190px; padding: 25px; }
+
+  .board-page .board { padding: 76px 0 85px; }
+  .board-page .board-heading { display: block; }
+  .board-page .board-heading p:last-child { margin-top: 22px; }
+  .board-page .board-grid { grid-template-columns: 1fr 1fr; }
+  .board-page .contact-grid { grid-template-columns: 1fr; }
+  .board-page .contact-grid .button { justify-self: start; }
+
+  .symposium-page .hero { min-height: 720px; }
+  .symposium-page .hero::before { background: linear-gradient(90deg, rgba(0,24,47,.94), rgba(0,27,54,.66)), url("/assets/images/msas_symposium.jpg") center 40% / cover; }
+  .symposium-page .hero-inner { padding-top: 155px; }
+  .symposium-page .overview,
+  .symposium-page .archive { padding: 78px 0 88px; }
+  .symposium-page .overview-grid,
+  .symposium-page .story-grid { grid-template-columns: 1fr; }
+  .symposium-page .overview-grid { gap: 36px; }
+  .symposium-page .feature-list { grid-template-columns: 1fr; margin-top: 48px; }
+  .symposium-page .feature,
+  .symposium-page .feature + .feature { padding: 28px 0; border-left: 0; }
+  .symposium-page .feature + .feature { border-top: 1px solid var(--line); }
+  .symposium-page .feature h3 { margin-top: 17px; }
+  .symposium-page .story-image { min-height: 440px; }
+  .symposium-page .story-copy { padding: 68px 28px 78px; }
+  .symposium-page .archive-head { display: block; }
+  .symposium-page .archive-head > p { margin-top: 22px; }
+}
+
+@media (max-width: 580px) {
+  .footer-top,
+  .footer-bottom,
+  .about-page .footer-row { flex-direction: column; align-items: flex-start; }
+  .board-page .board-grid,
+  .symposium-page .year-grid { grid-template-columns: 1fr; }
+  .board-page .portrait { aspect-ratio: 4 / 4.8; }
+  .symposium-page .year-card { min-height: 260px; }
+}
