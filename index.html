@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Michigan Sports Analytics Society helps students build practical sports analytics skills through projects, workshops, and its annual symposium.">
+  <meta name="theme-color" content="#00274c">
+  <title>Michigan Sports Analytics Society</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%2300274c'/%3E%3Cpath d='M12 43V21h9l11 14 11-14h9v22h-8V32L32 47 20 32v11z' fill='%23ffcb05'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --blue: #00274c;
+      --blue-2: #061d35;
+      --maize: #ffcb05;
+      --cream: #f7f6f0;
+      --white: #fff;
+      --ink: #132238;
+      --muted: #5d6978;
+      --line: rgba(0, 39, 76, .14);
+      --max: 1180px;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font: 400 1rem/1.65 "Manrope", system-ui, sans-serif;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .shell { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: inherit;
+      font: 500 .78rem/1.4 "DM Mono", monospace;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .site-header {
+      position: absolute;
+      z-index: 20;
+      inset: 0 0 auto;
+      color: var(--white);
+    }
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      border-bottom: 1px solid rgba(255,255,255,.22);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img { width: 48px; height: 48px; object-fit: contain; }
+    .brand-text { max-width: 190px; font-size: .8rem; font-weight: 800; line-height: 1.2; text-transform: uppercase; letter-spacing: .07em; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { font-size: .9rem; font-weight: 700; text-decoration: none; }
+    .nav-links a:not(.nav-cta):hover { color: var(--maize); }
+    .nav-cta { padding: 11px 17px; border-radius: 999px; color: var(--blue); background: var(--maize); }
+    .menu-button { display: none; border: 0; color: white; background: transparent; cursor: pointer; }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      display: grid;
+      place-items: end stretch;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--blue);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,22,43,.98) 0%, rgba(0,25,50,.87) 48%, rgba(0,20,42,.35) 100%),
+        url("https://msportsanalytics.com/wp-content/uploads/2024/12/msas.jpg?w=1440") center 38% / cover;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .22;
+      background-image: linear-gradient(rgba(255,255,255,.09) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.09) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to right, #000, transparent 72%);
+    }
+    .hero-inner { position: relative; z-index: 2; padding: 190px 0 72px; }
+    .hero-copy { width: min(800px, 100%); }
+    .hero .eyebrow { color: var(--maize); }
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(3.4rem, 7vw, 6.9rem);
+      line-height: .91;
+      letter-spacing: -.065em;
+    }
+    .hero-lede { max-width: 650px; margin: 30px 0 34px; color: rgba(255,255,255,.84); font-size: clamp(1.05rem, 2vw, 1.28rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 21px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-primary { color: var(--blue); background: var(--maize); }
+    .button-secondary { color: var(--white); border-color: rgba(255,255,255,.48); background: rgba(255,255,255,.04); }
+    .button:hover { transform: translateY(-2px); }
+    .signal-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 78px; background: rgba(255,255,255,.2); border-block: 1px solid rgba(255,255,255,.2); }
+    .signal { padding: 22px 26px 20px; background: rgba(0,28,55,.58); backdrop-filter: blur(8px); }
+    .signal span { display: block; color: var(--maize); font: 500 .72rem "DM Mono", monospace; letter-spacing: .09em; text-transform: uppercase; }
+    .signal strong { display: block; margin-top: 5px; font-size: 1rem; }
+
+    section { padding: 108px 0; }
+    .section-head { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; align-items: start; margin-bottom: 54px; }
+    .section-head h2, .symposium-copy h2, .join-copy h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: 1; letter-spacing: -.055em; }
+    .section-intro { max-width: 650px; margin: 4px 0 0; color: var(--muted); font-size: 1.1rem; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); }
+    .feature { position: relative; padding: 40px 34px 38px 0; }
+    .feature + .feature { padding-left: 34px; border-left: 1px solid var(--line); }
+    .feature-number { color: #7b8793; font: 500 .78rem "DM Mono", monospace; }
+    .feature h3 { margin: 34px 0 12px; font-size: 1.35rem; line-height: 1.2; }
+    .feature p { margin: 0; color: var(--muted); }
+
+    .symposium { padding: 0; color: white; background: var(--blue-2); }
+    .symposium-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 670px; }
+    .symposium-photo { position: relative; min-height: 460px; overflow: hidden; }
+    .symposium-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .symposium-photo::after { content: ""; position: absolute; inset: 0; box-shadow: inset -1px 0 rgba(255,255,255,.18); }
+    .symposium-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 92px); }
+    .symposium-copy .eyebrow { color: var(--maize); }
+    .symposium-copy p:not(.eyebrow) { max-width: 550px; margin: 26px 0 34px; color: rgba(255,255,255,.73); }
+
+    .join { background: var(--maize); }
+    .join-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 60px; align-items: end; }
+    .join-copy p { max-width: 650px; margin: 24px 0 0; color: rgba(0,39,76,.78); font-size: 1.08rem; }
+    .join-action { justify-self: end; }
+    .join .button-primary { color: white; background: var(--blue); }
+
+    footer { padding: 58px 0 30px; color: white; background: var(--blue); }
+    .footer-top { display: flex; justify-content: space-between; gap: 40px; align-items: flex-start; padding-bottom: 46px; border-bottom: 1px solid rgba(255,255,255,.18); }
+    .footer-brand { display: flex; gap: 17px; align-items: center; max-width: 430px; }
+    .footer-brand img { width: 66px; height: 66px; object-fit: contain; }
+    .footer-brand strong { display: block; font-size: 1.15rem; line-height: 1.25; }
+    .footer-brand span { display: block; margin-top: 4px; color: rgba(255,255,255,.62); font-size: .84rem; }
+    .socials { display: flex; flex-wrap: wrap; gap: 10px; }
+    .socials a { display: inline-grid; place-items: center; width: 45px; height: 45px; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; font: 500 .75rem "DM Mono", monospace; text-decoration: none; }
+    .socials a:hover { color: var(--blue); border-color: var(--maize); background: var(--maize); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 25px; color: rgba(255,255,255,.55); font-size: .78rem; }
+
+    :focus-visible { outline: 3px solid var(--maize); outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button:hover { transform: none; } }
+
+    @media (max-width: 800px) {
+      .shell { width: min(calc(100% - 28px), var(--max)); }
+      .nav { min-height: 76px; }
+      .brand img { width: 42px; height: 42px; }
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 14px;
+        right: 14px;
+        display: none;
+        padding: 20px;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px solid rgba(255,255,255,.16);
+        border-radius: 18px;
+        background: rgba(0,31,61,.98);
+        box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px; }
+      .nav-cta { text-align: center; }
+      .menu-button { display: inline-grid; place-items: center; width: 44px; height: 44px; }
+      .hero { min-height: 760px; }
+      .hero::before { background: linear-gradient(90deg, rgba(0,22,43,.96), rgba(0,27,52,.72)), url("https://msportsanalytics.com/wp-content/uploads/2024/12/msas.jpg?w=1024") 58% center / cover; }
+      .hero-inner { padding-top: 150px; }
+      h1 { font-size: clamp(3.3rem, 15vw, 5.2rem); }
+      .signal-row { grid-template-columns: 1fr; }
+      .signal + .signal { border-top: 1px solid rgba(255,255,255,.18); }
+      section { padding: 80px 0; }
+      .section-head, .symposium-grid, .join-grid { grid-template-columns: 1fr; }
+      .section-head { gap: 22px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature, .feature + .feature { padding: 30px 0; border-left: 0; }
+      .feature + .feature { border-top: 1px solid var(--line); }
+      .feature h3 { margin-top: 18px; }
+      .symposium-photo { min-height: 420px; }
+      .symposium-copy { padding: 64px 28px 76px; }
+      .join-action { justify-self: start; }
+      .footer-top, .footer-bottom { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Michigan Sports Analytics Society home">
+        <img src="https://msportsanalytics.wordpress.com/wp-content/uploads/2025/08/msas-logo-circle-1.png?w=150" alt="MSAS logo">
+        <span class="brand-text">Michigan Sports Analytics Society</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#symposium">Symposium</a>
+        <a href="https://msportsanalytics.com/eboard-25/">Executive Board</a>
+        <a class="nav-cta" href="https://forms.gle/o75ywypEzb8oC7ah6">Join MSAS</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner shell">
+        <div class="hero-copy">
+          <p class="eyebrow">University of Michigan · Ann Arbor</p>
+          <h1 id="hero-title">Where sports meet data.</h1>
+          <p class="hero-lede">Build real analytics skills, work with sports data, and learn alongside a community of students turning questions into evidence.</p>
+          <div class="actions">
+            <a class="button button-primary" href="https://forms.gle/o75ywypEzb8oC7ah6">Join the email list</a>
+            <a class="button button-secondary" href="#about">Explore MSAS</a>
+          </div>
+        </div>
+        <div class="signal-row" aria-label="Club focus areas">
+          <div class="signal"><span>01 · Learn</span><strong>Python &amp; R workshops</strong></div>
+          <div class="signal"><span>02 · Build</span><strong>Hands-on project teams</strong></div>
+          <div class="signal"><span>03 · Connect</span><strong>Students, faculty &amp; industry</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Our mission</p>
+            <h2>Learn by doing.</h2>
+          </div>
+          <p class="section-intro">MSAS helps students develop practical skills in sports data and analytics through real datasets, technical workshops, and projects that matter.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-number">01 / SKILLS</span>
+            <h3>Technical workshops</h3>
+            <p>Learn analytical tools and workflows in Python and R, from the fundamentals through applied sports analysis.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">02 / PROJECTS</span>
+            <h3>Real sports questions</h3>
+            <p>Join project teams that work with real datasets, build original analyses, and communicate useful findings.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">03 / COMMUNITY</span>
+            <h3>A network at Michigan</h3>
+            <p>Connect with students, faculty, peers, and industry professionals who share an interest in sports analytics.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="symposium" id="symposium">
+      <div class="symposium-grid">
+        <div class="symposium-photo">
+          <img src="https://msportsanalytics.com/wp-content/uploads/2025/08/img_0239-1.jpg?w=1532" alt="MSAS members presenting at the annual symposium" loading="lazy">
+        </div>
+        <div class="symposium-copy">
+          <p class="eyebrow">Annual symposium</p>
+          <h2>Present the work. Start the conversation.</h2>
+          <p>Our annual symposium brings together students, faculty, and industry leaders to share new analysis, explore the future of the field, and build connections across the sports analytics community.</p>
+          <div class="actions">
+            <a class="button button-primary" href="https://msportsanalytics.com/articles/symposium-26/">Symposium ’26</a>
+            <a class="button button-secondary" href="https://msportsanalytics.com/articles/symposium-25/">View 2025</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="join" id="join">
+      <div class="shell join-grid">
+        <div class="join-copy">
+          <p class="eyebrow">Get involved</p>
+          <h2>Bring your questions. Build the skills to answer them.</h2>
+          <p>Join the email list for application updates, workshops, project opportunities, and upcoming MSAS events.</p>
+        </div>
+        <div class="join-action">
+          <a class="button button-primary" href="https://forms.gle/o75ywypEzb8oC7ah6">Open the interest form</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="https://msportsanalytics.com/wp-content/uploads/2025/08/msas-logo-white.png?w=150" alt="" loading="lazy">
+          <div><strong>Michigan Sports Analytics Society</strong><span>Student-driven analytics at the University of Michigan.</span></div>
+        </div>
+        <div class="socials" aria-label="MSAS social links">
+          <a href="https://www.instagram.com/msas.umich/" aria-label="Instagram">IG</a>
+          <a href="https://www.linkedin.com/company/michigan-sports-analytics-society/" aria-label="LinkedIn">IN</a>
+          <a href="https://x.com/umichmsas" aria-label="X">X</a>
+          <a href="https://www.facebook.com/SportsAnalyticsUM/" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Michigan Sports Analytics Society</span><span>University of Michigan · Ann Arbor</span></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('#nav-links');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+    navLinks.addEventListener('click', (event) => {
+      if (event.target.matches('a')) {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
